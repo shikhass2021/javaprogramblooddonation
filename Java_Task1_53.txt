@@ -1,0 +1,123 @@
+*************************************************************************************************************
+Lab 1-Identification of Class and Methods-Section A
+Blood Donation Management System
+Submitted by Shikha Shukla 
+Reg No.- 2147153
+*************************************************************************************************************
+
+
+class Admin 
+{
+  string hospital_name;
+  string patient_details;
+ 
+ void add details();
+ void display details();
+ void search details();
+ 
+  
+}
+class Donor
+{
+  int d_id;
+  String d_name;
+  String address;
+  String emailId;
+  String username;
+  String password; 
+  int phoneNumber; 
+  String userType;
+
+void donateblood();
+void decidetodonate();
+/*
+        Console generated option whether user wants to donate. 
+        Actions performed based on answer: "Yes" or "No"
+*/
+class Manager
+{
+
+}
+
+class Assistant
+{
+}
+
+class Lab_Receptionist
+{
+  int userId;
+  int employeeId;
+  String name;
+  String address; 
+  String emailId; 
+  String username;
+  String password;
+  int phoneNumber;
+  String userType;
+
+ void registerDonor();
+ 
+}
+
+class Hospital_services
+{
+  int payment;
+  string feedback;
+  string ambulance details;
+  int P_Id;
+  int branchCode;
+  String name;
+  String address;
+  int phoneNumber; 
+
+void getbranchcode();
+void orderblood();
+void purchaseblood();
+
+
+
+}
+class organization
+{
+  string location;
+  void add details();
+  void search details();
+ 
+}
+class reports
+{
+  string blood_reports;
+  int p_id;
+  string p_name;
+  string adress;
+
+void add details();
+void search details
+  
+  
+  
+}
+class admin 
+{
+ int u_id;
+ string u_pass;
+ int employeeId;
+ String name;
+ String address;
+ String emailId;
+ String username;
+ String password;
+ int phoneNumber; 
+ String userType;
+
+ 
+ void farword_request();
+ void draw_salary();  
+}
+class sample_collection
+{
+ string blood_test
+ string u_test
+
+ void  
+}
