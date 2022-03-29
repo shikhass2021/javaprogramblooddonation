@@ -1,0 +1,41 @@
+package SourceCode.BloodBank;
+
+import SourceCode.Users.*;
+import java.util.ArrayList;
+import java.util.List;
+import static SourceCode.constants.Constants.*;
+
+public class BloodBank {
+
+    private String name;
+    private String ISO_PERMISSION;
+    private String address;
+    private int branchCode;
+    private int contact;
+    private ArrayList<User> userList;
+
+    private static BloodBank instance;
+    static int currentIdNumber = 0;
+
+    public BloodBank(String name, String ISO_PERMISSION, String address, int branchCode, int contact) {
+        this.name = name;
+        this.ISO_PERMISSION = ISO_PERMISSION;
+        this.address = address;
+        this.branchCode = branchCode;
+        this.contact = contact;
+        userList = new ArrayList<User>();
+    }
+
+    public static BloodBank getInstance() {
+        if (instance == null) {
+            instance = new BloodBank("xyz", "13", "walton", 152, 030000);
+        }
+        return instance;
+    }
+
+    public void Init() {
+        userList.add(new User(++currentIdNumber, null, null, null, "admin", "123", -1, ADMIN));
+    }
+
+    public void createUser(String userType, String name, String address, String emailId, String username, String password, int phoneNumber, int branchCode) {
+        User user = null;
