@@ -11,7 +11,8 @@ class BloodDonation {
         System.out.println("BLOOD DONATION MANAGEMENT SYSTEM");
         System.out.println("1. Donor");
         System.out.println("2. Admin");
-        System.out.println("3. Exit\n");
+        // System.out.println("3. Employee");
+        System.out.println("4. Exit\n");
         try (Scanner sc = new Scanner(System.in)) {
             int choice = sc.nextInt();
 
@@ -23,6 +24,10 @@ class BloodDonation {
                 Admin a1 = new Admin();
                 a1.login();
             }
+            // if (choice == 3){
+            // Employee e1 = new Employee();
+            // e1.login();
+            // }
         }
     }
 }
@@ -50,7 +55,7 @@ class Donor_details {
         address = "bangalore";
 
         date = "08/08/2020";
-        D_email = "sweety.shukla@gamail.org";
+        D_email = "";
         Admin_name = "Dr. Aman";
         Hospital_assigned = "Johns medical hospital";
     }
@@ -83,12 +88,14 @@ class Donor_details {
         this.marital_status = marital_status;
         this.address = address;
         this.date = date;
-        this.D_email = D_email;
+        String mail = new String();
+        mail = D_email.concat("@gmail.com");
+        // this.D_email = D_email;
         this.Admin_name = Admin_name;
         this.Hospital_assigned = Hospital_assigned;
 
         display(this.D_id, this.Dname, this.age, this.gender, this.phone_no, this.marital_status, this.address,
-                this.date, this.D_email, this.Admin_name, this.Hospital_assigned);
+                this.date, mail, this.Admin_name, this.Hospital_assigned);
 
     }
 
@@ -210,15 +217,16 @@ class Admin extends Donor_details {
                         System.out.println("Enter date of the Blood donation : ");
                         String date = sc.next();
                         System.out.println("Enter the donor email : ");
-                        String D_mail = sc.next();
+                        String D_email = sc.next();
                         System.out.println("Enter the Admin Name : ");
                         String Admin_name = sc.next();
                         System.out.println("Enter the Hospital Name : ");
                         String Hospital_assigned = sc.next();
 
                         D1[i] = new Donor_details();
-                        D1[i].getdondetails(D_id, Dname, age, gender, Hospital_assigned, marital_status, address, date,
-                                D_mail, Admin_name, Hospital_assigned);
+                        D1[i].getdondetails(D_id, Dname, age, gender, phone_no, marital_status,
+                                address, date, D_email, Admin_name,
+                                Hospital_assigned);
                     }
 
                 } else if (choice == 2) {
@@ -241,3 +249,222 @@ class Admin extends Donor_details {
         }
     }
 }
+// class Employee extends BloodDonation{
+
+// }
+
+// class Hospital {
+// protected int hosp_id;
+// public String hosp_name;
+// protected float revenue;
+// protected float expenses;
+
+// void profit() {
+// System.out.println("\n Net profit is : nothing right now!!");
+// }
+
+// // Anonymous Object
+// {
+// new Hospital().profit();
+// }
+// }
+
+// class Bloodcamp extends Hospital {
+// static int Bloodcamp_id = 10001;
+// String Bloodcamp_name;
+// // String hosp_name;
+// String start_date;
+// String end_date;
+// String Deadline;
+// String Bloodcamp_head;
+// String Client_name;
+
+// Bloodcamp() {
+// Bloodcamp_id++;
+// System.out.println("Bloodcamp id is " + Bloodcamp_id);
+// }
+
+// void show_active_Bloodcamp() {
+// System.out.println("\nlist of active Bloodcamp");
+// }
+
+// }
+
+// class Attendance extends Employee {
+// static int total_leave;
+// int no_leave_taken;
+// // float attendance_count;
+// static int total_working_days;
+
+// // static method
+// static void year(int year) {
+// if (year == 365) {
+// total_leave = 20;
+// total_working_days = 250;
+// } else if (year == 366) {
+// total_leave = 22;
+// total_working_days = 257;
+// }
+// }
+
+// static void calculate_attandance(int no_of_days) {
+// // this.no_of_days = no_of_days;
+// System.out.println("Presend days " + no_of_days);
+// System.out.println(total_working_days);
+// float attendance_count = ((no_of_days / total_working_days) * 100);
+// System.out.println("Attendance percentage: " + attendance_count);
+// }
+
+// static void calculate_attandance(int no_of_days, int no_leave_taken) {
+// System.out.println("Presend days " + no_of_days);
+// System.out.println("total working days " + total_working_days);
+// System.out.println("leave taken " + no_leave_taken);
+// float attendance_count = (((no_of_days - no_leave_taken) /
+// total_working_days) * 100);
+// System.out.println("Attendance percentage: " + attendance_count);
+// }
+// }
+
+// class client extends Project {
+// String org_name;
+// String client_name;
+// int c_phoneno;
+// String email;
+// float project_revenue;
+
+// Scanner sc = new Scanner(System.in);
+
+// void getdetails() {
+// System.out.println("Enter the client's orginization : ");
+// org_name = sc.next();
+// System.out.println("Enter the Contanct number : ");
+// c_phoneno = sc.nextInt();
+// System.out.println("Enter the client name: ");
+// client_name = sc.next();
+// System.out.println("Enter the Email : ");
+// email = sc.next();
+// System.out.println("Project cost: ");
+// project_revenue = sc.nextFloat();
+
+// }
+
+// void display() {
+// System.out.println("Enter the client's orginization : " + org_name);
+// System.out.println("Enter the Contanct number : " + c_phoneno);
+// System.out.println("Enter the client name: " + client_name);
+// System.out.println("Enter the Email : " + email);
+// System.out.println("Project cost: " + project_revenue);
+// }
+
+// void min_max() {
+// // min and max value project
+// System.out.println("\n MIN and MAX is!!");
+// }
+
+// }
+
+// class Payroll extends Employee_details {
+// float basic_pay;
+// float HRA;
+// float DA;
+// float pf;
+// int ot;
+// float gross_salary;
+// float net_salary;
+
+// // constructor overloading and chaining
+// Payroll(String designation) {
+// if (designation == "Nurse") {
+// basic_pay = 15000;
+// HRA = (float) (basic_pay * 0.4);
+// ;
+// DA = 1000;
+// pf = 2100;
+// } else if (designation == "Manager") {
+// basic_pay = 21000;
+// HRA = (float) (basic_pay * 0.5);
+// DA = 1700;
+// pf = 3500;
+// } else {
+// basic_pay = 12000;
+// HRA = (float) (basic_pay * 0.3);
+// ;
+// DA = 1100;
+// pf = 1450;
+// }
+
+// }
+
+// Payroll(String week_day, int no_of_days, String designation) {
+// this(designation);
+// int total_ot;
+// if (week_day == "Monday" || week_day == "monday" || week_day == "Tuesday" ||
+// week_day == "tuesday"
+// || week_day == "Wednesday" || week_day == "wednesday" || week_day ==
+// "Thursday"
+// || week_day == "thursday") {
+
+// ot = 250;
+// } else if (week_day == "Friday" || week_day == "friday" || week_day ==
+// "Satuday" || week_day == "Saturday") {
+// ot = 500;
+// }
+// total_ot = ot * no_of_days;
+// calculate_salary(basic_pay, HRA, DA, pf, total_ot);
+
+// }
+
+// void calculate_salary(float basic_pay, float HRA, float DA, float pf, int ot)
+// {
+// float c_salary = 0;
+// c_salary = ((basic_pay + HRA + DA + ot) - pf);
+// System.out.println("Basic Pay : " + basic_pay);
+// System.out.println("House rent allowance : " + HRA);
+// System.out.println("Dearness Allowance : " + DA);
+// System.out.println("Provident fund : " + pf);
+// System.out.println("Pay for the month is: " + c_salary);
+
+// }
+
+// public Payroll() {
+// System.out.println("Default constructor for payroll class");
+// }
+
+// void calculate_CTC() {
+// float ctc = 0;
+// ctc = ((basic_pay + HRA + DA) - pf) * 12;
+// System.out.println("Basic Pay : " + basic_pay);
+// System.out.println("House rent allowance : " + HRA);
+// System.out.println("Dearness Allowance : " + DA);
+// System.out.println("Provident fund : " + pf);
+// System.out.println("The CTC is: " + ctc);
+
+// Donor_details emp3 = new Donor_details() {
+// void getdondetails() {
+// System.out.println("Donor Name : " + Dname);
+// System.out.println("Age : " + age);
+// System.out.println("gender : " + gender);
+// System.out.println("phone number : " + phone_no);
+// System.out.println("status : " + marital_status);
+// System.out.println("Address : " + address);
+// }
+// };
+// don3.getdondetails();
+// }
+
+// }
+
+// // Nested static Class
+// class Hospital {
+// static String org_name = "CMH";
+// static String stateName = "karanataka";
+// static String cityName = "Bangalore";
+
+// static class Hospital1 {
+// void info() {
+// System.out.println(org_name + " is in " + stateName + cityName);
+// }
+
+// }
+
+// }
