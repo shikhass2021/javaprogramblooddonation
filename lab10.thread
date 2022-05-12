@@ -1,1 +1,83 @@
 
+import java.util.Scanner;
+import java.util.*;
+
+class doable implements Runnable
+{
+    Scanner sc = new Scanner(System.in);
+    public void run()
+    {
+        System.out.println("Enter the number to get the square: ");
+        int a = sc.nextInt();
+        System.out.println("Executing : "+Thread.currentThread().getName());
+        square(a);
+    }
+
+    synchronized public void square(int b)
+    {
+        for(int i=1;i <=b; i++)
+        {
+        int c = i*b;
+        System.out.println("the output is : "+c);
+        }
+    }
+}
+
+class doing extends Thread
+{
+    public void run()
+    {
+        try {
+            Thread.sleep(1500);
+        } 
+        catch (Exception e) {
+            System.out.println(e);    
+            //TODO: handle exception
+        }
+        System.out.println("thred created using extend class");
+            System.out.println("Executing : "+Thread.currentThread().getName());
+
+    }
+}
+
+class lab10
+{
+    static Scanner sc = new Scanner(System.in);
+    
+    public static void main(String [] args)
+    {
+        doing do1 = new doing();
+        doable d1 = new doable();
+        doable d2 = new doable();
+        Thread t1 = new  Thread(d1);
+        Thread t2 = new Thread(d2);
+
+        System.out.println("enter the number of thread you want to create: ");
+        int n = sc.nextInt();
+
+        doing [] d = new doing[n];
+        //Thread [] d = new Thread[n];
+        for( int i =0; i<n; i++)
+        {
+            d[i]=new doing();
+            d[i].start();
+        }
+
+        do1.setName("doing thread");
+        do1.setPriority(Thread.MIN_PRIORITY);
+        do1.start();
+        //do1.setName("doing thread");
+        t1.setName("t1 thread");
+        //t1.setPriority(Thread.MIN_PRIORITY);
+        t1.start();
+        try {
+            t1.join();
+        } catch (Exception e) {
+            System.out.println(e);
+            //TODO: handle exception
+        }
+        t2.setName("t2 thread");
+            t2.start();
+
+    }
+}
