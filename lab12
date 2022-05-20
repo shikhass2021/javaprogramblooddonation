@@ -1,16 +1,15 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
-class now extends JFrame implements ActionListener {
+class lab12 extends JFrame implements ActionListener {
     Container c;
     JLabel l1, l2, l3, l4;
     JTextField tf1, tf2, tf3, tf4;
     JButton b1, b2, b3, b4, b5;
 
-    now() {
+    lab12() {
         c = getContentPane();
         c.setLayout(new FlowLayout(FlowLayout.LEFT));
         setTitle("All in one");
@@ -20,7 +19,7 @@ class now extends JFrame implements ActionListener {
         l1 = new JLabel("Fist Name");
         l2 = new JLabel("Last Name");
         l3 = new JLabel("Address");
-        l4 = new JLabel("Flight");
+        l4 = new JLabel("Hospital_name");
         tf1 = new JTextField(30);
         tf2 = new JTextField(30);
         tf3 = new JTextField(30);
@@ -70,9 +69,24 @@ class now extends JFrame implements ActionListener {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/final", "root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/final", "root", "Freakin@104");
             System.out.println("Connection established");
             Statement stmt = conn.createStatement();
+            // // database creation
+            // String s="Create database final";
+            // stmt.executeUpdate(s);
+            // System.out.println("Database created Successfully");
+            // //creating table
+            // String s1="Create Table data(Fname varchar(50),Lname varchar(50),Address varchar(50),Flight varchar(20))";
+            // stmt.executeUpdate(s1);
+            // System.out.println("Table created Successfully");
+            // //executeBatch();
+            // conn.setAutoCommit(false);
+            // stmt.addBatch("insert into data values('Virat','Kohli','New Delhi','AirIndia')");
+            // stmt.addBatch("insert into data values('MS','Dhoni','Ranchi','Vistara')");
+            // stmt.executeBatch();
+            // conn.commit();
+            // System.out.println("Done");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -96,7 +110,7 @@ class now extends JFrame implements ActionListener {
         if (ae.getSource() == b2) {
             System.out.println("Update");
             try {
-                String ud = "Update data set Flight=? where Fname=?";
+                String ud = "Update data set Project=? where Fname=?";
                 PreparedStatement stt = conn.prepareStatement(ud);
                 stt.setString(1, fourth);
                 stt.setString(2, first);
@@ -134,13 +148,13 @@ class now extends JFrame implements ActionListener {
                 Statement st = conn.createStatement();
                 // Resultset
                 ResultSet rs = st.executeQuery("Select * FROM data");
-                System.out.println("Fname          Lname                Address            Flight");
+                System.out.println("Fname          Lname                Address            Hospital_name");
                 while (rs.next()) {
                     String name = rs.getString("Fname");
                     String lname = rs.getString("Lname");
                     String address = rs.getString("Address");
-                    String flight = rs.getString("Flight");
-                    System.out.println(name + "       " + lname + "        " + address + "       " + flight + "  ");
+                    String project = rs.getString("Hospital_name");
+                    System.out.println(name + "       " + lname + "        " + address + "       " + project + "  ");
                 }
 
             } catch (Exception ept) {
@@ -150,7 +164,14 @@ class now extends JFrame implements ActionListener {
     }
 
     public static void main(String args[]) {
-        new now();
+        new lab12();
     }
 
 }
+
+
+
+
+
+
+
